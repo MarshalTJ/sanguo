@@ -1,18 +1,29 @@
 package com.tj.sanguo.resource;
 
+import java.io.Serializable;
+
 /**
  * 资源基类
  * @author Administrator
  *
  */
-public class Resource {
-	protected int nums;
+public class Resource implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected float nums;
 	protected String name;
 	protected String desc;
-	public int getNums() {
+	
+	public void add(float n) {
+		this.nums += n;
+	}
+	
+	public float getNums() {
 		return nums;
 	}
-	public void setNums(int nums) {
+	public void setNums(float nums) {
 		this.nums = nums;
 	}
 	public String getName() {

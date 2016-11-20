@@ -1,22 +1,30 @@
 package com.tj.sanguo.city.building;
 
-import com.tj.sanguo.City;
+import java.io.Serializable;
+
+import com.tj.sanguo.city.City;
 
 /**
  * 建筑物
  * @author Administrator
  *
  */
-public class Building {
+public abstract class Building implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected City city;
 	protected String name;
 	protected String desc;
-	protected int level = 1;
+	protected int level = 0;
 	protected int population = 1;
-	// 建筑物当前状态：0 无，1 升级， 2 降级
+	protected boolean iswait = false;
+	// 建筑物当前状态：0 无，1 升级， 2 降级 
 	protected int status = 0;
 	protected long startTime;
 	protected long updateCost = 100;
+	protected int updateNeedPopulation = 0;
 	protected long degradeCost = 80;
 	protected float buildRate = 1.15f;
 	
@@ -31,17 +39,20 @@ public class Building {
 	}
 	
 	protected void init() {
-		this.startTime = System.currentTimeMillis();
+		changeDesc();
+//		this.startTime = System.currentTimeMillis();
 	}
 	
 	public void update() {
 		check();
 		costResouce();
-		this.startTime = System.currentTimeMillis();
+		status = 1;
+		iswait = true;
 	}
 	
 	public void degrade() {
-		this.startTime = System.currentTimeMillis();
+		status = 2;
+		iswait =true;
 	}
 	
 	public void updateCommit() {
@@ -58,8 +69,37 @@ public class Building {
 		this.changeEffect();
 	}
 	
+	public void startBuild() {
+		this.startTime = System.currentTimeMillis();
+		iswait = false;
+	}
+	
+	public void buildCommit() {
+		if (status == 1) {
+			updateCommit();
+		}
+		else if (status == 2) {
+			degradeCommit();
+		}
+		status = 0;
+	}
+	
+	public long getCostTime() {
+		if (status == 1) {
+			return updateCost;
+		}
+		else if (status == 2) {
+			return degradeCost;
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	protected abstract void changeDesc();
+	
 	protected void changeEffect() {
-		
+		changeDesc();
 	}
 	
 	protected void updateChangeCostTime() {
@@ -71,33 +111,36 @@ public class Building {
 	}
 	
 	protected void updateChangePopulation() {
-		if (this.level <= 5) {
-			this.population += 1;
+		this.population += updateNeedPopulation;
+		
+		if (this.level < 5) {
+			this.updateNeedPopulation = 1;
 		}
-		else if (this.level <= 10) {
-			this.population += 2;
+		else if (this.level < 10) {
+			this.updateNeedPopulation = 2;
 		}
-		else if (this.level <= 15) {
-			this.population += 3;
+		else if (this.level < 15) {
+			this.updateNeedPopulation = 3;
 		}
 		else {
-			this.population += 4;
+			this.updateNeedPopulation = 4;
 		}
 	}
 	
 	protected void degradeChangePopulation() {
 		if (this.level < 5) {
-			this.population -= 1;
+			this.updateNeedPopulation = 1;
 		}
 		else if (this.level < 10) {
-			this.population -= 2;
+			this.updateNeedPopulation = 2;
 		}
 		else if (this.level < 15) {
-			this.population -= 3;
+			this.updateNeedPopulation = 3;
 		}
 		else {
-			this.population -= 4;
+			this.updateNeedPopulation = 4;
 		}
+		this.population -= updateNeedPopulation;
 	}
 	
 	protected void check() {
@@ -128,6 +171,14 @@ public class Building {
 	public void setLevel(int level) {
 		this.level = level;
 	}
+	public int getUpdateNeedPopulation() {
+		return updateNeedPopulation;
+	}
+
+	public void setUpdateNeedPopulation(int updateNeedPopulation) {
+		this.updateNeedPopulation = updateNeedPopulation;
+	}
+
 	public int getPopulation() {
 		return population;
 	}
