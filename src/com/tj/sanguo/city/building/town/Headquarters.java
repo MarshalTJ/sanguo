@@ -1,4 +1,4 @@
-package com.tj.sanguo.building.city.town;
+package com.tj.sanguo.city.building.town;
 
 /**
  * µã±ø³¡

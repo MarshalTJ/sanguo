@@ -1,10 +1,10 @@
-package com.tj.sanguo.building.city;
+package com.tj.sanguo.city.building;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.tj.sanguo.City;
-import com.tj.sanguo.building.city.village.VillageBuilding;
+import com.tj.sanguo.city.building.village.VillageBuilding;
 
 /**
  * ≥«Õ‚

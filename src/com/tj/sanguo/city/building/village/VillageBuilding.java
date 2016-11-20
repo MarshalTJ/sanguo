@@ -1,7 +1,7 @@
-package com.tj.sanguo.building.city.village;
+package com.tj.sanguo.city.building.village;
 
 import com.tj.sanguo.City;
-import com.tj.sanguo.building.city.Building;
+import com.tj.sanguo.city.building.Building;
 
 public class VillageBuilding extends Building {
 	

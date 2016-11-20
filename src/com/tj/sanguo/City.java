@@ -3,10 +3,10 @@ package com.tj.sanguo;
 import java.util.Queue;
 
 import com.sun.scenario.effect.Effect;
-import com.tj.sanguo.building.city.Building;
-import com.tj.sanguo.building.city.Position;
-import com.tj.sanguo.building.city.Town;
-import com.tj.sanguo.building.city.Village;
+import com.tj.sanguo.city.building.Building;
+import com.tj.sanguo.city.building.Position;
+import com.tj.sanguo.city.building.Town;
+import com.tj.sanguo.city.building.Village;
 
 // ³ÇÊÐ
 public class City {

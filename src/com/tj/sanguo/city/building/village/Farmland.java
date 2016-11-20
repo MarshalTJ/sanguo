@@ -1,4 +1,4 @@
-package com.tj.sanguo.building.city.village;
+package com.tj.sanguo.city.building.village;
 
 import com.tj.sanguo.City;
 
