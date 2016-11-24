@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.client.remoteinterface.RemoteInterfaceFactory;
+import com.tj.sanguo.holder.MonarchHolder;
 import com.tj.sanguo.rmiapi.operate.IOperateBuilding;
 
 public class BuildingInfoPanel extends JPanel {
@@ -72,12 +73,17 @@ public class BuildingInfoPanel extends JPanel {
 	private void updateBuilding(Building chooseBuild) {
 		IOperateBuilding remote = RemoteInterfaceFactory.getIOperateBuilding();
 		try {
-			remote.update();
+			remote.update(MonarchHolder.MYSELF,  chooseBuild);
 		} catch (RemoteException e) {
-			
+			System.out.println("update building error");
 		}
 	}
 	private void degradeBuilding(Building chooseBuild) {
-		
+		IOperateBuilding remote = RemoteInterfaceFactory.getIOperateBuilding();
+		try {
+			remote.degrade(MonarchHolder.MYSELF,  chooseBuild);
+		} catch (RemoteException e) {
+			System.out.println("degrade building error");
+		}
 	}
 }

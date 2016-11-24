@@ -19,13 +19,13 @@ public class QueryCityImpl extends UnicastRemoteObject implements IQueryCity {
 	}
 
 	@Override
-	public Monarch queryCity(City city) throws RemoteException {
+	public Monarch queryCity(Monarch myself, City city) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Monarch queryMyselfCity(City city) throws RemoteException {
+	public Monarch queryMyselfCity(Monarch myself, City city) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

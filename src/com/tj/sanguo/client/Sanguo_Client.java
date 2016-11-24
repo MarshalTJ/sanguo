@@ -1,9 +1,6 @@
 package com.tj.sanguo.client;
 
 import java.awt.Color;
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -13,8 +10,9 @@ import javax.swing.WindowConstants;
 
 import com.tj.sanguo.city.City;
 import com.tj.sanguo.client.remoteinterface.RemoteInterfaceFactory;
+import com.tj.sanguo.holder.MonarchHolder;
 import com.tj.sanguo.monarch.Monarch;
-import com.tj.sanguo.rmiapi.query.IQueryMonarch;
+import com.tj.sanguo.rmiapi.operate.IOperateMonarch;
 
 public class Sanguo_Client extends JFrame {
 	
@@ -35,12 +33,16 @@ public class Sanguo_Client extends JFrame {
 	         * 如果RMI Service就在本地机器上，URL就是：rmi://localhost:1099/hello
 	         * 否则，URL就是：rmi://RMIService_IP:1099/hello
 	         */
-			IQueryMonarch queryMonarch = RemoteInterfaceFactory.getIQueryMonarch();
+//			IQueryMonarch queryMonarch = RemoteInterfaceFactory.getIQueryMonarch();
 			/* 通过stub调用远程接口实现 */
-//			Monarch myslef = queryMonarch.queryMyself(myself);
+//			Monarch monarch = queryMonarch.queryMonarch("大帅比");
 			
-			Monarch monarch = queryMonarch.queryMonarch("大帅比");
+			IOperateMonarch operateMonarch = RemoteInterfaceFactory.getIOperateMonarch();
+			Monarch monarch = operateMonarch.login("大帅比", "123456");
+			
 			myself = monarch;
+			MonarchHolder.MYSELF = myself;
+			
 			List<City> cities = myself.getCities();
 			
 			for (City city : cities) {

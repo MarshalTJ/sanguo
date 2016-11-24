@@ -88,7 +88,7 @@ public class CityResouce implements Runnable,Serializable {
 			if (volumen < ownIrons.getNums()) {
 				ownIrons.setNums(volumen);
 			}
-			System.out.println("wood,iron,food is :" + ownWoods.getNums() + ", " + ownIrons.getNums() + ", " + ownFoods.getNums());
+//			System.out.println("wood,iron,food is :" + ownWoods.getNums() + ", " + ownIrons.getNums() + ", " + ownFoods.getNums());
 		}
 	}
 	
@@ -133,5 +133,13 @@ public class CityResouce implements Runnable,Serializable {
 	}
 	public void setProductIrons(Iron productIrons) {
 		this.productIrons = productIrons;
+	}
+
+	public int getVolumen() {
+		return volumen;
+	}
+
+	public void setVolumen(int volumen) {
+		this.volumen = volumen;
 	}
 }

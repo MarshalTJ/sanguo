@@ -18,10 +18,12 @@ public class City implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected Monarch monarch;
+	protected int number = 0;
+	protected int subNumber = 0;
 	protected String name;
 	// 类型：0 - 446, 1 - 338, 2 - 2210, 3 - 114, 4 - 0014 
 	protected int type = 0;
-	protected int population;
+	protected int population = 2;
 	protected boolean isCapital = false;
 	protected int maxLevel = 20;
 	protected Position pos;
@@ -34,8 +36,8 @@ public class City implements Serializable {
 	protected BlockingQueue<Building> waitQueue = new ArrayBlockingQueue<>(3);;
 	
 	protected CityResouce cityResouce;
-	protected BuildingTask buildingTask1;
-	protected BuildingTask buildingTask2;
+	protected transient BuildingTask buildingTask1;
+	protected transient BuildingTask buildingTask2;
 	
 	public City(Monarch monarch, int type, boolean isCaptial, int maxLevel, Position pos) {
 		this.monarch = monarch;
@@ -59,14 +61,20 @@ public class City implements Serializable {
 		
 	}
 	
-	public void addBuildTask(Building building) {
-		if (buildingQueue.size() == 2) {
-			if (waitQueue.size() == 3) {
-				throw new RuntimeException("任务队列已满");
-			}
-			waitQueue.add(building);
+	public void addDegradeTask(Building building) {
+		if (waitQueue.size() == 3) {
+			throw new RuntimeException("任务队列已满");
 		}
-		buildingQueue.add(building);
+		building.degrade();
+		waitQueue.add(building);
+	}
+	
+	public void addUpdateTask(Building building) {
+		if (waitQueue.size() == 3) {
+			throw new RuntimeException("任务队列已满");
+		}
+		building.update();
+		waitQueue.add(building);
 	}
 	
 	public void buildCommit(Building building) {
@@ -76,6 +84,18 @@ public class City implements Serializable {
 			return;
 		}
 		buildingQueue.add(waitBuild);
+	}
+	
+	public void recountPopulation() {
+		this.population = 0;
+		for (Building building : this.village.getBuilds()) {
+			population += building.getPopulation();
+		}
+		
+//		for (Building building : this.town.getBuilds()) {
+//			population += building.getPopulation();
+//		}
+		this.monarch.recountPopulation();
 	}
 	
 	public String getName() {
@@ -152,10 +172,29 @@ public class City implements Serializable {
 	public void setWaitQueue(BlockingQueue<Building> waitQueue) {
 		this.waitQueue = waitQueue;
 	}
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
 	public CityResouce getCityResouce() {
 		return cityResouce;
 	}
 	public void setCityResouce(CityResouce cityResouce) {
 		this.cityResouce = cityResouce;
+	}
+	public int getSubNumber() {
+		return subNumber;
+	}
+
+	public void setSubNumber(int subNumber) {
+		this.subNumber = subNumber;
+	}
+	
+	public int getAndAddSubNumber() {
+		return subNumber ++;
 	}
 }

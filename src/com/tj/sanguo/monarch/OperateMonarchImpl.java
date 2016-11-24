@@ -12,7 +12,7 @@ public class OperateMonarchImpl extends UnicastRemoteObject implements IOperateM
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected OperateMonarchImpl() throws RemoteException {
+	public OperateMonarchImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -20,7 +20,16 @@ public class OperateMonarchImpl extends UnicastRemoteObject implements IOperateM
 	@Override
 	public Monarch login(String user, String password) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		Monarch monarch = MonarchManager.INSTALL.getMonarch(user);
+		if (monarch == null) {
+			throw new RemoteException("用户不存在");
+		}
+		if (!"123456".equals(password)) {
+			throw new RemoteException("账号或密码错误");
+		}
+		
+		monarch.setSsid((long) Math.random() * 99999999);
+		return monarch;
 	}
 
 	@Override

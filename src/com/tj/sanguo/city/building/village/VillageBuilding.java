@@ -24,7 +24,7 @@ public abstract class VillageBuilding extends Building {
 		}
 		
 		changeDesc();
-//		this.city.getCityResouce()
+		this.city.getCityResouce().reCountProduct();
 	}
 
 //	protected abstract void changeDesc();

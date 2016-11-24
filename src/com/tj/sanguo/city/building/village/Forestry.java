@@ -10,6 +10,7 @@ public class Forestry extends VillageBuilding {
 	}
 	
 	protected void init() {
+		super.init();
 		name = "林场";
 		desc = "生产木头";
 		population = 1;

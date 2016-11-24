@@ -32,7 +32,7 @@ public class RemoteInterfaceFactory {
 	public static IQueryBuilding getIQueryBuilding() {
 		IQueryBuilding remote = null;
 		try {
-			remote = (IQueryBuilding) Naming.lookup("rmi://localhost:10999/querybuilding");
+			remote = (IQueryBuilding) Naming.lookup("rmi://localhost:10999/queryBuilding");
 		} catch (Exception e) {
 			System.out.println("RemoteInterfaceFactory.getIQueryMonarch error");
 		}

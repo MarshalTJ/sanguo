@@ -1,7 +1,14 @@
 package com.tj.sanguo.monarch;
 
+import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.tj.sanguo.city.City;
+import com.tj.sanguo.city.building.Building;
+import com.tj.sanguo.city.building.village.VillageBuilding;
+import com.tj.sanguo.util.CipherUtil;
+import com.tj.sanguo.util.HexUtil;
 
 public class MonarchManager {
 	private Map<String, Monarch> namemonarchs = new HashMap<>();
@@ -35,4 +42,48 @@ public class MonarchManager {
 	public Monarch getMonarch(long ssid) {
 		return ssidmonarchs.get(ssid);
 	}
+	
+	public Monarch getMonarch(Monarch myself) {
+		String enSeesion = myself.getSession().substring(0, 32);
+		String ssidstr = null;
+		ssidstr = CipherUtil.doDecrype(HexUtil.decodeHex(enSeesion.toCharArray()));//new String(HexUtil.decodeHex(enSeesion.toCharArray()),"UTF8");
+		long ssid = Long.valueOf(ssidstr);
+		return this.getMonarch(ssid);
+	}
+	
+	public City findChooseCity(Monarch myself, Building building) throws RemoteException {
+		Monarch monarch = getMonarch(myself);
+		City chooseCity = null;
+		for (City city : monarch.getCities()) {
+			if (city.getNumber() == building.getCity().getNumber()) {
+				chooseCity = city;
+				break;
+			}
+		}
+		if (chooseCity == null) {
+			throw new RemoteException("该建筑城市未找到");
+		}
+		return chooseCity;
+	}
+	public Building findChooseBuilding(City chooseCity, Building building) throws RemoteException {
+		Building chooseBuilding = null;
+		if (building instanceof VillageBuilding) {
+			for (Building building2 : chooseCity.getVillage().getBuilds()) {
+				if (building2.getNumber() == building.getNumber()) {
+					chooseBuilding = building2;
+					break;
+				}
+			}
+		}
+		else {
+//			for (Building building2 : chooseCity.getTown().getBuilds()) {
+//				if (building2.getNumber() == building.getNumber()) {
+//					chooseBuilding = building2;
+//					break;
+//				}
+//			}
+		}
+		return chooseBuilding;
+	}
+	
 }

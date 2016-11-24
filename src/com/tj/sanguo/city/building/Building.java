@@ -15,10 +15,11 @@ public abstract class Building implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected City city;
+	protected int number = 0;
 	protected String name;
 	protected String desc;
 	protected int level = 0;
-	protected int population = 1;
+	protected int population = 0;
 	protected boolean iswait = false;
 	// 建筑物当前状态：0 无，1 升级， 2 降级 
 	protected int status = 0;
@@ -39,6 +40,7 @@ public abstract class Building implements Serializable {
 	}
 	
 	protected void init() {
+		this.number = this.city.getAndAddSubNumber();
 		changeDesc();
 //		this.startTime = System.currentTimeMillis();
 	}
@@ -59,14 +61,12 @@ public abstract class Building implements Serializable {
 		this.level ++;
 		this.updateChangePopulation();
 		this.updateChangeCostTime();
-		this.changeEffect();
 	}
 	
 	public void degradeCommit() {
 		this.level --;
 		this.degradeChangePopulation();
 		this.degradeChangeCostTime();
-		this.changeEffect();
 	}
 	
 	public void startBuild() {
@@ -81,7 +81,10 @@ public abstract class Building implements Serializable {
 		else if (status == 2) {
 			degradeCommit();
 		}
+		
 		status = 0;
+		this.changeEffect();
+		this.city.recountPopulation();
 	}
 	
 	public long getCostTime() {
@@ -102,6 +105,14 @@ public abstract class Building implements Serializable {
 		changeDesc();
 	}
 	
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
 	protected void updateChangeCostTime() {
 		this.updateCost = (long) (updateCost * buildRate);
 	}

@@ -38,4 +38,7 @@ public class Resource implements Serializable {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	public int changeIntToShow() {
+		return (int) (nums * 60);
+	}
 }

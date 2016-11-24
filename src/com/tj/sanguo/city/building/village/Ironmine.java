@@ -10,6 +10,7 @@ public class Ironmine extends VillageBuilding {
 	}
 	
 	protected void init() {
+		super.init();
 		name = "Ìú¿ó";
 		desc = "Éú²úÌú¿ó";
 		population = 2;

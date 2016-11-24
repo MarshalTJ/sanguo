@@ -1,10 +1,11 @@
 package com.tj.sanguo.city;
 
 import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 import com.tj.sanguo.city.building.Building;
 
-public class BuildingTask implements Runnable,Serializable {
+public class BuildingTask implements Runnable, Serializable {
 	protected City city;
 	public BuildingTask(City city) {
 		this.city = city;
@@ -15,11 +16,13 @@ public class BuildingTask implements Runnable,Serializable {
 		// TODO Auto-generated method stub
 		while (true) {
 			try {
-				Building building = city.getBuildingQueue().take();
+				Building building = city.getWaitQueue().take();
 				long costTime = building.getCostTime();
 				System.out.println("start build " + building.getName());
+				city.getBuildingQueue().offer(building, 10, TimeUnit.MILLISECONDS);
 				building.startBuild();
-				Thread.sleep(costTime);
+				Thread.sleep(costTime * 1000);
+				city.getBuildingQueue().remove(building);
 				building.buildCommit();
 				System.out.println("finish build " + building.getName());
 			} catch (InterruptedException e) {
