@@ -10,7 +10,7 @@ public abstract class VillageBuilding extends Building {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected int product = 5;
-	protected float rate = 1.10f;
+	protected float rate = 1.25f;
 	
 	public VillageBuilding(City city) {
 		super(city);

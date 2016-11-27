@@ -17,12 +17,12 @@ public class Farmland extends VillageBuilding {
 		
 		updateCost = 40;
 		degradeCost = 30;
-		buildRate = 1.10f;
+//		buildRate = 1.10f;
 		
 		costFood = 20;
 		costWood = 50;
 		costIron = 50;
-		costRate = 1.20f;
+		costRate = 1.25f;
 	}
 	
 	protected void updateChangePopulation() {

@@ -51,6 +51,18 @@ public class MonarchManager {
 		return this.getMonarch(ssid);
 	}
 	
+	public City findChooseCity(Monarch myself, City city) throws RemoteException {
+		Monarch monarch = getMonarch(myself);
+		City chooseCity = null;
+		for (City mycity : monarch.getCities()) {
+			if (mycity.getNumber() == city.getNumber()) {
+				chooseCity = mycity;
+				break;
+			}
+		}
+		return chooseCity;
+	}
+	
 	public City findChooseCity(Monarch myself, Building building) throws RemoteException {
 		Monarch monarch = getMonarch(myself);
 		City chooseCity = null;

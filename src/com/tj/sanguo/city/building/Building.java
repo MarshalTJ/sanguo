@@ -27,7 +27,7 @@ public abstract class Building implements Serializable {
 	protected long updateCost = 100;
 	protected int updateNeedPopulation = 0;
 	protected long degradeCost = 80;
-	protected float buildRate = 1.15f;
+	protected float buildRate = 1.25f;
 	
 	protected int costFood = 100;
 	protected int costWood = 100;

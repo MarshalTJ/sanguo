@@ -74,7 +74,7 @@ public class Sanguo_Client extends JFrame {
 		contentPane.add(jp_center);
 		
 		jp_right = new RightPanel(myself);
-		jp_right.setBounds(790, 20, 200, 600);
+		jp_right.setBounds(790, 20, 400, 600);
 		jp_right.setBackground(Color.YELLOW);
 		contentPane.add(jp_right);
 	}
@@ -87,7 +87,7 @@ public class Sanguo_Client extends JFrame {
         //加上这一句就可以显示一个仅有关闭，最小化，最大化的按钮的Frame了  
         f.setVisible(true);  
         //再加上这一句就可以显示一个在左上角，拥有指定大小的Frame了  
-        f.setSize(1000, 700);  
+        f.setSize(1200, 700);  
         //再加上这一句就可以把Frame放在最中间了  
         f.setLocationRelativeTo(null);  
         //如果没有这一句，在点击关闭Frame的时候程序其实还是在执行状态中的，加上这一句才算是真正的把资源释放掉了  

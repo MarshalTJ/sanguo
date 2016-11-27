@@ -1,19 +1,22 @@
 package com.tj.sanguo.client.panel.center;
 
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.tj.sanguo.city.City;
 import com.tj.sanguo.city.building.Building;
+import com.tj.sanguo.client.IChangeCityListener;
+import com.tj.sanguo.client.LeftPanel;
 import com.tj.sanguo.client.remoteinterface.RemoteInterfaceFactory;
 import com.tj.sanguo.holder.MonarchHolder;
 import com.tj.sanguo.rmiapi.operate.IOperateBuilding;
 
-public class BuildingInfoPanel extends JPanel {
+public class BuildingInfoPanel extends JPanel implements IChangeCityListener {
 
 	/**
 	 * 
@@ -24,15 +27,17 @@ public class BuildingInfoPanel extends JPanel {
 	private Building chooseBuild = null;
 	private Building oldChoose = null;
 	
-	private Label label = new Label();
+	private JLabel label = new JLabel();
 	private JButton update = new JButton("Éý¼¶");
 	private JButton degrade = new JButton("½µ¼¶");
 	
 	private BuildingInfoPanel() {
+		LeftPanel.register(this);
+		
 		this.setLayout(null);
-		label.setBounds(3, 3, 550, 30);
-		update.setBounds(10, 35, 100, 20);
-		degrade.setBounds(120, 35, 100, 20);
+		label.setBounds(3, 3, 550, 50);
+		update.setBounds(310, 55, 100, 20);
+		degrade.setBounds(420, 55, 100, 20);
 		
 		update.addActionListener(new ActionListener() {
             @Override
@@ -59,7 +64,7 @@ public class BuildingInfoPanel extends JPanel {
 		super.repaint();
 		oldChoose = chooseBuild;
 		
-		label.setText(oldChoose.getDesc());
+		label.setText("<html>" + oldChoose.getDesc() + "</html>");
 	}
 	
 	public Building getChooseBuild() {
@@ -85,5 +90,11 @@ public class BuildingInfoPanel extends JPanel {
 		} catch (RemoteException e) {
 			System.out.println("degrade building error");
 		}
+	}
+
+	@Override
+	public void changeCity(City city) {
+		// TODO Auto-generated method stub
+		
 	}
 }

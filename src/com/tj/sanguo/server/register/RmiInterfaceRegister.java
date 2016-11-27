@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
+import com.tj.sanguo.city.QueryCityImpl;
 import com.tj.sanguo.city.building.OperateBuildingImpl;
 import com.tj.sanguo.city.building.QueryBuildingImpl;
 import com.tj.sanguo.monarch.OperateMonarchImpl;
@@ -11,6 +12,7 @@ import com.tj.sanguo.monarch.QueryMonarchImpl;
 import com.tj.sanguo.rmiapi.operate.IOperateBuilding;
 import com.tj.sanguo.rmiapi.operate.IOperateMonarch;
 import com.tj.sanguo.rmiapi.query.IQueryBuilding;
+import com.tj.sanguo.rmiapi.query.IQueryCity;
 import com.tj.sanguo.rmiapi.query.IQueryMonarch;
 
 public class RmiInterfaceRegister {
@@ -39,6 +41,9 @@ public class RmiInterfaceRegister {
 			
 			IQueryBuilding queryBuilding = new QueryBuildingImpl();
 			java.rmi.Naming.rebind("rmi://localhost:10999/queryBuilding", queryBuilding);
+			
+			IQueryCity queryCity = new QueryCityImpl();
+			java.rmi.Naming.rebind("rmi://localhost:10999/queryCity", queryCity);
 			
 			System.out.println("register end");
 		} catch (RemoteException | MalformedURLException e) {

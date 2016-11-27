@@ -39,8 +39,10 @@ public class City implements Serializable {
 	protected transient BuildingTask buildingTask1;
 	protected transient BuildingTask buildingTask2;
 	
-	public City(Monarch monarch, int type, boolean isCaptial, int maxLevel, Position pos) {
+	public City(Monarch monarch,String name,int number, int type, boolean isCaptial, int maxLevel, Position pos) {
 		this.monarch = monarch;
+		this.name = name;
+		this.number = number;
 		this.type = type;
 		this.isCapital = isCaptial;
 		this.maxLevel = maxLevel;

@@ -17,12 +17,12 @@ public class Ironmine extends VillageBuilding {
 		
 		updateCost = 100;
 		degradeCost = 80;
-		buildRate = 1.20f;
+//		buildRate = 1.20f;
 		
 		costFood = 50;
 		costWood = 50;
 		costIron = 30;
-		costRate = 1.20f;
+//		costRate = 1.30f;
 	}
 	
 	protected void updateChangePopulation() {

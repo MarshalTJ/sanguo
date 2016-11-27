@@ -24,7 +24,7 @@ public class RemoteInterfaceFactory {
 		try {
 			remote = (IQueryCity) Naming.lookup("rmi://localhost:10999/queryCity");
 		} catch (Exception e) {
-			System.out.println("RemoteInterfaceFactory.getIQueryMonarch error");
+			System.out.println("RemoteInterfaceFactory.getIQueryCity error");
 		}
 		return remote;
 	}
@@ -34,7 +34,7 @@ public class RemoteInterfaceFactory {
 		try {
 			remote = (IQueryBuilding) Naming.lookup("rmi://localhost:10999/queryBuilding");
 		} catch (Exception e) {
-			System.out.println("RemoteInterfaceFactory.getIQueryMonarch error");
+			System.out.println("RemoteInterfaceFactory.getIQueryBuilding error");
 		}
 		return remote;
 	}
@@ -44,7 +44,7 @@ public class RemoteInterfaceFactory {
 		try {
 			remote = (IOperateBuilding) Naming.lookup("rmi://localhost:10999/operateBuilding");
 		} catch (Exception e) {
-			System.out.println("RemoteInterfaceFactory.getIQueryMonarch error");
+			System.out.println("RemoteInterfaceFactory.getIOperateBuilding error");
 		}
 		return remote;
 	}
@@ -53,7 +53,7 @@ public class RemoteInterfaceFactory {
 		try {
 			remote = (IOperateCity) Naming.lookup("rmi://localhost:10999/operateCity");
 		} catch (Exception e) {
-			System.out.println("RemoteInterfaceFactory.getIQueryMonarch error");
+			System.out.println("RemoteInterfaceFactory.getIOperateCity error");
 		}
 		return remote;
 	}
@@ -62,7 +62,7 @@ public class RemoteInterfaceFactory {
 		try {
 			remote = (IOperateMonarch) Naming.lookup("rmi://localhost:10999/operateMonarch");
 		} catch (Exception e) {
-			System.out.println("RemoteInterfaceFactory.getIQueryMonarch error");
+			System.out.println("RemoteInterfaceFactory.getIOperateMonarch error");
 		}
 		return remote;
 	}

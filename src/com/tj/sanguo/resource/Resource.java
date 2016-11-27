@@ -39,6 +39,6 @@ public class Resource implements Serializable {
 		this.desc = desc;
 	}
 	public int changeIntToShow() {
-		return (int) (nums * 60);
+		return (int) (nums);
 	}
 }

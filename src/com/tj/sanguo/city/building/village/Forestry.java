@@ -17,12 +17,12 @@ public class Forestry extends VillageBuilding {
 		
 		updateCost = 80;
 		degradeCost = 60;
-		buildRate = 1.15f;
+//		buildRate = 1.15f;
 		
 		costFood = 50;
 		costWood = 30;
 		costIron = 50;
-		costRate = 1.20f;
+//		costRate = 1.20f;
 	}
 
 	@Override

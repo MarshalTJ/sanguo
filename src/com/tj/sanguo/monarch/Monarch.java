@@ -26,7 +26,9 @@ public class Monarch implements Serializable {
 	public Monarch(String name) {
 		System.out.println("欢迎君主：" + name );
 		this.name = name;
-		cities.add(new City(this, 0, true, 21, new Position()));
+		cities.add(new City(this, "安定",0, 0, true, 21, new Position()));
+		cities.add(new City(this, "河西",1, 2, false, 20, new Position()));
+		cities.add(new City(this, "九真",2, 3, false, 20, new Position()));
 	}
 	
 	public void recountPopulation() {
