@@ -115,11 +115,11 @@ public class RightPanel extends JPanel implements IChangeCityListener {
 		ownFood.add(productFood.getNums());
 		
 		info_wood.delete(0, info_wood.length());
-		info_wood.append("  Ä¾:").append(ownWood.changeIntToShow()).append("/").append(volumen).append("/").append(productWood.getNums());
+		info_wood.append("  Ä¾:").append(ownWood.getNumsToInt()).append("/").append(volumen).append("/").append(productWood.getNums());
 		info_iron.delete(0, info_iron.length());
-		info_iron.append("  Ìú:").append(ownIron.changeIntToShow()).append("/").append(volumen).append("/").append(productIron.getNums());
+		info_iron.append("  Ìú:").append(ownIron.getNumsToInt()).append("/").append(volumen).append("/").append(productIron.getNums());
 		info_food.delete(0, info_food.length());
-		info_food.append("  Á¸:").append(ownFood.changeIntToShow()).append("/").append(volumen).append("/").append(productFood.getNums()).append("/").append(MonarchHolder.MYSELF.getChooseCity().getPopulation());
+		info_food.append("  Á¸:").append(ownFood.getNumsToInt()).append("/").append(volumen).append("/").append(productFood.getNums()).append("/").append(MonarchHolder.MYSELF.getChooseCity().getPopulation());
 		
 		lb_resourceInfo_wood.setText(info_wood.toString());
 		lb_resourceInfo_iron.setText(info_iron.toString());

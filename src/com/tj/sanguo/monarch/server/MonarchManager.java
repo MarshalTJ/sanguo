@@ -89,12 +89,12 @@ public class MonarchManager {
 			}
 		}
 		else {
-//			for (Building building2 : chooseCity.getTown().getBuilds()) {
-//				if (building2.getNumber() == building.getNumber()) {
-//					chooseBuilding = building2;
-//					break;
-//				}
-//			}
+			for (Building building2 : chooseCity.getTown().getBuilds()) {
+				if (building2.getNumber() == building.getNumber()) {
+					chooseBuilding = building2;
+					break;
+				}
+			}
 		}
 		return chooseBuilding;
 	}

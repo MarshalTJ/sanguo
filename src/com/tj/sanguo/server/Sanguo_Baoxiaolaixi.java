@@ -1,11 +1,13 @@
-package com.tj.sanguo;
+package com.tj.sanguo.server;
 
+import com.tj.sanguo.map.MapManager;
 import com.tj.sanguo.monarch.Monarch;
 import com.tj.sanguo.monarch.server.MonarchManager;
 import com.tj.sanguo.server.register.RmiInterfaceRegister;
 
 public class Sanguo_Baoxiaolaixi {
 	MonarchManager monarchManager = MonarchManager.INSTALL;
+	MapManager mapManager = MapManager.INSTALL;
 	RmiInterfaceRegister register = new RmiInterfaceRegister();
 	
 	public Sanguo_Baoxiaolaixi() {

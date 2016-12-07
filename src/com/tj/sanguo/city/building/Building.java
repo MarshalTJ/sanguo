@@ -205,19 +205,19 @@ public abstract class Building implements Serializable {
 	}
 	// 检查人口是否允许
 	private void checkPopulation() {
-		if (this.getCity().getCityResouce().getProductFoods().changeIntToShow() - this.getCity().getPopulation() - this.updateNeedPopulation < 0) {
+		if (this.getCity().getCityResouce().getProductFoods().getProductPerHour() - this.getCity().getPopulation() - this.updateNeedPopulation < 0) {
 			throw new RuntimeException("城市粮食产量不足，请先升级农田!");
 		}
 	}
 	// 检查资源是否足够
 	private void checkResource() {
-		if (this.getCity().getCityResouce().getOwnWoods().changeIntToShow() < this.costWood) {
+		if (this.getCity().getCityResouce().getOwnWoods().getNumsToInt() < this.costWood) {
 			throw new RuntimeException("城市木头不足，请升级农场或者攻打山寨获取资源或者其他方式获取资源!");
 		}
-		if (this.getCity().getCityResouce().getOwnIrons().changeIntToShow() < this.costIron) {
+		if (this.getCity().getCityResouce().getOwnIrons().getNumsToInt() < this.costIron) {
 			throw new RuntimeException("城市铁矿不足，请升级农场或者攻打山寨获取资源或者其他方式获取资源!");
 		}
-		if (this.getCity().getCityResouce().getOwnFoods().changeIntToShow() < this.costFood) {
+		if (this.getCity().getCityResouce().getOwnFoods().getNumsToInt() < this.costFood) {
 			throw new RuntimeException("城市粮食不足，请升级农场或者攻打山寨获取资源或者其他方式获取资源!");
 		}
 	}

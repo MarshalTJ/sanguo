@@ -40,7 +40,10 @@ public class Resource implements Serializable {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	public int changeIntToShow() {
+	public int getProductPerHour() {
+		return (int) (nums * 60);
+	}
+	public int getNumsToInt() {
 		return (int) (nums);
 	}
 }

@@ -5,6 +5,7 @@ import javax.swing.JTabbedPane;
 
 import com.tj.sanguo.city.City;
 import com.tj.sanguo.client.panel.center.BuildingInfoPanel;
+import com.tj.sanguo.client.panel.center.MapPanel;
 import com.tj.sanguo.client.panel.center.TownPanel;
 import com.tj.sanguo.client.panel.center.VillagePanel;
 import com.tj.sanguo.monarch.Monarch;
@@ -19,7 +20,7 @@ public class CenterPanel extends JPanel implements IChangeCityListener {
 	
 	TownPanel jp_town = null;
 	VillagePanel jp_village = null;
-	JPanel jp_map = new JPanel();
+	MapPanel jp_map = new MapPanel();
 	
 	JPanel jp_center_bottom = BuildingInfoPanel.BUILDING_INFO_PANEL;
 	

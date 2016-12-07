@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tj.sanguo.Position;
 import com.tj.sanguo.city.City;
-import com.tj.sanguo.city.Position;
 import com.tj.sanguo.util.CipherUtil;
 import com.tj.sanguo.util.HexUtil;
 import com.tj.sanguo.util.StringUtil;
@@ -26,9 +26,9 @@ public class Monarch implements Serializable {
 	public Monarch(String name) {
 		System.out.println("欢迎君主：" + name );
 		this.name = name;
-		cities.add(new City(this, "安定",0, 0, true, 21, new Position()));
-		cities.add(new City(this, "河西",1, 2, false, 20, new Position()));
-		cities.add(new City(this, "九真",2, 3, false, 20, new Position()));
+		cities.add(new City(this, "安定",0, 0, true,  21, Position.createPosition()));
+		cities.add(new City(this, "河西",1, 2, false, 20, Position.createPosition()));
+		cities.add(new City(this, "九真",2, 3, false, 20, Position.createPosition()));
 	}
 	
 	public void recountPopulation() {

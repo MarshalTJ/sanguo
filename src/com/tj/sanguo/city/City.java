@@ -1,9 +1,9 @@
 package com.tj.sanguo.city;
 
-import java.io.Serializable;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+import com.tj.sanguo.Position;
 import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.city.building.Town;
 import com.tj.sanguo.city.building.Village;
@@ -13,10 +13,7 @@ import com.tj.sanguo.effect.Effect;
 import com.tj.sanguo.monarch.Monarch;
 
 // ³ÇÊÐ
-public class City implements Serializable {
-	/**
-	 * 
-	 */
+public class City extends Position {
 	private static final long serialVersionUID = 1L;
 	protected Monarch monarch;
 	protected int number = 0;
@@ -27,7 +24,7 @@ public class City implements Serializable {
 	protected int population = 2;
 	protected boolean isCapital = false;
 	protected int maxLevel = 20;
-	protected Position pos;
+//	protected Position pos;
 	protected Effect effect ;
 	
 	protected Town town;
@@ -41,13 +38,13 @@ public class City implements Serializable {
 	protected transient BuildingTask buildingTask2;
 	
 	public City(Monarch monarch,String name,int number, int type, boolean isCaptial, int maxLevel, Position pos) {
+		super(pos.getX(), pos.getY());
 		this.monarch = monarch;
 		this.name = name;
 		this.number = number;
 		this.type = type;
 		this.isCapital = isCaptial;
 		this.maxLevel = maxLevel;
-		this.pos = pos;
 		
 		init();
 	}
@@ -148,12 +145,12 @@ public class City implements Serializable {
 	public void setMaxLevel(int maxLevel) {
 		this.maxLevel = maxLevel;
 	}
-	public Position getPos() {
-		return pos;
-	}
-	public void setPos(Position pos) {
-		this.pos = pos;
-	}
+//	public Position getPos() {
+//		return pos;
+//	}
+//	public void setPos(Position pos) {
+//		this.pos = pos;
+//	}
 	public Effect getEffect() {
 		return effect;
 	}

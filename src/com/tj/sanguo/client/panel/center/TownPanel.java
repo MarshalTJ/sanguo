@@ -1,5 +1,6 @@
 package com.tj.sanguo.client.panel.center;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 
 import com.tj.sanguo.city.City;
 import com.tj.sanguo.city.building.Building;
+import com.tj.sanguo.client.LeftPanel;
 import com.tj.sanguo.client.holder.MonarchHolder;
 import com.tj.sanguo.client.remoteinterface.RemoteInterfaceFactory;
 import com.tj.sanguo.monarch.Monarch;
@@ -28,7 +30,8 @@ public class TownPanel extends JPanel {
 		this.myself = myself;
 		this.setLayout(new GridLayout(4, 4, 5, 5));
 		jp_canBuild.setBounds(0, 0, 200, 80);
-		
+		jp_canBuild.setBackground(Color.BLUE);
+		this.add(jp_canBuild);
 		refresh();
 	}
 	public void refresh() {
@@ -73,6 +76,7 @@ public class TownPanel extends JPanel {
 			} catch (RemoteException e) {
 				System.out.println(e);
 			}
+			return;
 		}
 		
 		try {
@@ -93,6 +97,7 @@ public class TownPanel extends JPanel {
 		Set<Building> canBuilds = null;
 		void setCanBuilds(Set<Building> canBuilds) {
 			this.canBuilds = canBuilds;
+			this.refresh();
 		}
 		public void refresh() {
 			this.removeAll();
