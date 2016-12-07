@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import com.tj.sanguo.city.City;
 import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.city.resource.CityResouce;
-import com.tj.sanguo.holder.MonarchHolder;
+import com.tj.sanguo.client.holder.MonarchHolder;
 import com.tj.sanguo.monarch.Monarch;
 import com.tj.sanguo.resource.Food;
 import com.tj.sanguo.resource.Iron;

@@ -1,11 +1,13 @@
-package com.tj.sanguo.city.building;
+package com.tj.sanguo.city.server.building;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Set;
 
 import com.tj.sanguo.city.City;
+import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.monarch.Monarch;
-import com.tj.sanguo.monarch.MonarchManager;
+import com.tj.sanguo.monarch.server.MonarchManager;
 import com.tj.sanguo.rmiapi.query.IQueryBuilding;
 
 public class QueryBuildingImpl extends UnicastRemoteObject implements IQueryBuilding {
@@ -25,5 +27,12 @@ public class QueryBuildingImpl extends UnicastRemoteObject implements IQueryBuil
 		City chooseCity = MonarchManager.INSTALL.findChooseCity(myself, building);
 		Building chooseBuilding = MonarchManager.INSTALL.findChooseBuilding(chooseCity, building);
 		return chooseBuilding;
+	}
+
+	@Override
+	public Set<Building> queryCanBuildBuilding(Monarch myself, City city) throws RemoteException {
+		City chooseCity = MonarchManager.INSTALL.findChooseCity(myself, city);
+		// TODO Auto-generated method stub
+		return chooseCity.getTown().getCanbuilds();
 	}
 }

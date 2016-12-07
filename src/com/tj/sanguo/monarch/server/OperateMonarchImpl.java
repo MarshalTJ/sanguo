@@ -1,8 +1,9 @@
-package com.tj.sanguo.monarch;
+package com.tj.sanguo.monarch.server;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import com.tj.sanguo.monarch.Monarch;
 import com.tj.sanguo.rmiapi.operate.IOperateMonarch;
 
 public class OperateMonarchImpl extends UnicastRemoteObject implements IOperateMonarch {

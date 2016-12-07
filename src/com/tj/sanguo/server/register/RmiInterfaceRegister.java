@@ -4,11 +4,11 @@ import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import com.tj.sanguo.city.QueryCityImpl;
-import com.tj.sanguo.city.building.OperateBuildingImpl;
-import com.tj.sanguo.city.building.QueryBuildingImpl;
-import com.tj.sanguo.monarch.OperateMonarchImpl;
-import com.tj.sanguo.monarch.QueryMonarchImpl;
+import com.tj.sanguo.city.server.QueryCityImpl;
+import com.tj.sanguo.city.server.building.OperateBuildingImpl;
+import com.tj.sanguo.city.server.building.QueryBuildingImpl;
+import com.tj.sanguo.monarch.server.OperateMonarchImpl;
+import com.tj.sanguo.monarch.server.QueryMonarchImpl;
 import com.tj.sanguo.rmiapi.operate.IOperateBuilding;
 import com.tj.sanguo.rmiapi.operate.IOperateMonarch;
 import com.tj.sanguo.rmiapi.query.IQueryBuilding;

@@ -14,7 +14,11 @@ public abstract class VillageBuilding extends Building {
 	
 	public VillageBuilding(City city) {
 		super(city);
+		this.level = 0;
 		// TODO Auto-generated constructor stub
+	}
+
+	protected void initEffect() {
 	}
 
 	protected void changeEffect() {

@@ -1,19 +1,17 @@
-package com.tj.sanguo.city.building;
+package com.tj.sanguo.city.server.building;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import com.tj.sanguo.city.City;
+import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.city.building.village.VillageBuilding;
 import com.tj.sanguo.monarch.Monarch;
-import com.tj.sanguo.monarch.MonarchManager;
+import com.tj.sanguo.monarch.server.MonarchManager;
 import com.tj.sanguo.rmiapi.operate.IOperateBuilding;
 
 public class OperateBuildingImpl extends UnicastRemoteObject implements IOperateBuilding {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public OperateBuildingImpl() throws RemoteException {
@@ -36,6 +34,12 @@ public class OperateBuildingImpl extends UnicastRemoteObject implements IOperate
 		Building chooseBuilding = MonarchManager.INSTALL.findChooseBuilding(chooseCity, building);
 		chooseBuilding.setStatus(2);
 		chooseCity.addDegradeTask(chooseBuilding);
+	}
+
+	@Override
+	public void buildBuilding(Monarch myself, Building building) throws RemoteException {
+		City chooseCity = MonarchManager.INSTALL.findChooseCity(myself, building);
+		building.setCity(chooseCity);
 	}
 
 }

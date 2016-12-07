@@ -1,7 +1,7 @@
 package com.tj.sanguo;
 
 import com.tj.sanguo.monarch.Monarch;
-import com.tj.sanguo.monarch.MonarchManager;
+import com.tj.sanguo.monarch.server.MonarchManager;
 import com.tj.sanguo.server.register.RmiInterfaceRegister;
 
 public class Sanguo_Baoxiaolaixi {

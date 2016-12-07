@@ -1,8 +1,9 @@
-package com.tj.sanguo.city;
+package com.tj.sanguo.city.server;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
+import com.tj.sanguo.city.City;
 import com.tj.sanguo.city.building.Building;
 
 public class BuildingTask implements Runnable, Serializable {

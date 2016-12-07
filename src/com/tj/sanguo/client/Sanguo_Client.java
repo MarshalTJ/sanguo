@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import com.tj.sanguo.city.City;
+import com.tj.sanguo.client.holder.MonarchHolder;
 import com.tj.sanguo.client.remoteinterface.RemoteInterfaceFactory;
-import com.tj.sanguo.holder.MonarchHolder;
 import com.tj.sanguo.monarch.Monarch;
 import com.tj.sanguo.rmiapi.operate.IOperateMonarch;
 

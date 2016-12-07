@@ -8,6 +8,7 @@ import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.city.building.Town;
 import com.tj.sanguo.city.building.Village;
 import com.tj.sanguo.city.resource.CityResouce;
+import com.tj.sanguo.city.server.BuildingTask;
 import com.tj.sanguo.effect.Effect;
 import com.tj.sanguo.monarch.Monarch;
 
@@ -54,6 +55,7 @@ public class City implements Serializable {
 	protected void init() {
 		village = new Village(this);
 		cityResouce = new CityResouce(this);
+		town = new Town(this);
 		new Thread(cityResouce).start();
 		
 		buildingTask1 = new BuildingTask(this);
@@ -61,6 +63,14 @@ public class City implements Serializable {
 		new Thread(buildingTask1).start();
 		new Thread(buildingTask2).start();
 		
+	}
+	
+	public void buildBuilding(Building building) {
+		if (waitQueue.size() == 3) {
+			throw new RuntimeException("任务队列已满");
+		}
+		building.build();
+		waitQueue.add(building);
 	}
 	
 	public void addDegradeTask(Building building) {

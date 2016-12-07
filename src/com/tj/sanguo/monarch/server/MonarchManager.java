@@ -1,4 +1,4 @@
-package com.tj.sanguo.monarch;
+package com.tj.sanguo.monarch.server;
 
 import java.rmi.RemoteException;
 import java.util.HashMap;
@@ -7,6 +7,7 @@ import java.util.Map;
 import com.tj.sanguo.city.City;
 import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.city.building.village.VillageBuilding;
+import com.tj.sanguo.monarch.Monarch;
 import com.tj.sanguo.util.CipherUtil;
 import com.tj.sanguo.util.HexUtil;
 

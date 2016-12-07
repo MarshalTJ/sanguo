@@ -1,10 +1,11 @@
-package com.tj.sanguo.city;
+package com.tj.sanguo.city.server;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import com.tj.sanguo.city.City;
 import com.tj.sanguo.monarch.Monarch;
-import com.tj.sanguo.monarch.MonarchManager;
+import com.tj.sanguo.monarch.server.MonarchManager;
 import com.tj.sanguo.rmiapi.query.IQueryCity;
 
 public class QueryCityImpl extends UnicastRemoteObject implements IQueryCity {

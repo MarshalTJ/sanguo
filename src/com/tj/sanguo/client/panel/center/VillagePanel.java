@@ -13,16 +13,13 @@ import com.tj.sanguo.city.City;
 import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.city.building.village.VillageBuilding;
 import com.tj.sanguo.client.IChangeCityListener;
+import com.tj.sanguo.client.holder.MonarchHolder;
 import com.tj.sanguo.client.remoteinterface.RemoteInterfaceFactory;
-import com.tj.sanguo.holder.MonarchHolder;
 import com.tj.sanguo.monarch.Monarch;
 import com.tj.sanguo.rmiapi.query.IQueryBuilding;
 
 public class VillagePanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public VillagePanel(Monarch myself) {
 		this.setLayout(new GridLayout(4, 4, 5, 5));
@@ -58,6 +55,5 @@ public class VillagePanel extends JPanel {
 			System.out.println(e);
 		}
 		BuildingInfoPanel.BUILDING_INFO_PANEL.setChooseBuild(building);
-		BuildingInfoPanel.BUILDING_INFO_PANEL.repaint();
 	}
 }

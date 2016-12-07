@@ -19,7 +19,9 @@ public class Resource implements Serializable {
 	public void add(float n) {
 		this.nums += n;
 	}
-	
+	public void cost(float n) {
+		this.nums -= n;
+	}
 	public float getNums() {
 		return nums;
 	}

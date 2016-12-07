@@ -17,7 +17,7 @@ public class CenterPanel extends JPanel implements IChangeCityListener {
 
 	JTabbedPane jtb=new JTabbedPane(JTabbedPane.TOP);
 	
-	JPanel jp_town = null;
+	TownPanel jp_town = null;
 	VillagePanel jp_village = null;
 	JPanel jp_map = new JPanel();
 	
@@ -45,7 +45,7 @@ public class CenterPanel extends JPanel implements IChangeCityListener {
 
 	@Override
 	public void changeCity(City city) {
-		
+		jp_town.refresh();
 		jp_village.refresh();
 		jtb.setSelectedIndex(1);
 	}

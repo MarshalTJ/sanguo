@@ -12,8 +12,8 @@ import com.tj.sanguo.city.City;
 import com.tj.sanguo.city.building.Building;
 import com.tj.sanguo.client.IChangeCityListener;
 import com.tj.sanguo.client.LeftPanel;
+import com.tj.sanguo.client.holder.MonarchHolder;
 import com.tj.sanguo.client.remoteinterface.RemoteInterfaceFactory;
-import com.tj.sanguo.holder.MonarchHolder;
 import com.tj.sanguo.rmiapi.operate.IOperateBuilding;
 
 public class BuildingInfoPanel extends JPanel implements IChangeCityListener {
